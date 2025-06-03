@@ -1,4 +1,6 @@
-"""日志模块"""
+"""
+Logging utilities for MCP Daily News.
+"""
 
 import logging
 import sys
@@ -8,24 +10,16 @@ from typing import Any, Optional
 class Logger:
     """自定义日志器"""
     
-    def __init__(self):
-        self._logger = logging.getLogger("mcp-daily-news")
-        self._logger.setLevel(logging.INFO)
-        
-        # 创建控制台处理器
-        handler = logging.StreamHandler(sys.stderr)
-        handler.setLevel(logging.INFO)
-        
-        # 创建格式器
-        formatter = logging.Formatter(
-            "[%(asctime)s] %(levelname)s: %(message)s",
-            datefmt="%Y-%m-%d %H:%M:%S"
-        )
-        handler.setFormatter(formatter)
-        
-        # 添加处理器
+    def __init__(self, name: Optional[str] = None):
+        self._logger = logging.getLogger("mcp_daily_news")
         if not self._logger.handlers:
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter(
+                "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+            )
+            handler.setFormatter(formatter)
             self._logger.addHandler(handler)
+            self._logger.setLevel(logging.INFO)
         
         self._mcp_server: Optional[Any] = None
     

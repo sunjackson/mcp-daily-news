@@ -17,7 +17,7 @@
 ### 方式一：从源码安装（推荐）
 
 ```bash
-cd mcp-daily-news
+cd mcp_daily_news
 pip install -r requirements.txt
 pip install -e .
 ```
@@ -25,14 +25,14 @@ pip install -e .
 ### 方式二：直接安装依赖
 
 ```bash
-cd mcp-daily-news
+cd mcp_daily_news
 pip install -r requirements.txt
 ```
 
 ### 方式三：使用pip安装（发布后）
 
 ```bash
-pip install mcp-daily-news
+pip install mcp_daily_news
 ```
 
 ## 📖 使用指南
@@ -41,7 +41,7 @@ pip install mcp-daily-news
 
 ```bash
 # 如果已安装包
-mcp-daily-news
+mcp_daily_news
 
 # 或者直接运行模块
 python -m mcp_daily_news.main
@@ -70,7 +70,7 @@ python -m mcp_daily_news.main
 {
   "mcpServers": {
     "daily-news": {
-      "command": "mcp-daily-news"
+      "command": "mcp_daily_news"
     }
   }
 }
@@ -91,7 +91,7 @@ python -m mcp_daily_news.main
 {
   "mcpServers": {
     "daily-news": {
-      "command": "mcp-daily-news",
+      "command": "mcp_daily_news",
       "env": {
         "DAILY_NEWS_HIDDEN_FIELDS": "cover,get-zhihu-trending:description"
       }
@@ -108,7 +108,7 @@ Trend Hub 支持通过环境变量添加自定义 RSS 源：
 {
   "mcpServers": {
     "daily-news": {
-      "command": "mcp-daily-news",
+      "command": "mcp_daily_news",
       "env": {
         "TRENDS_HUB_CUSTOM_RSS_URL": "https://news.yahoo.com/rss"
       }

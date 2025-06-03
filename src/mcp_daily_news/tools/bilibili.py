@@ -4,7 +4,7 @@ import hashlib
 import time
 from datetime import datetime
 from urllib.parse import urlencode
-from ..utils import define_tool_config, http_client, cache_storage, logger
+from ..utils import define_tool_config, http_client, cache, logger
 from ..types import ToolConfig
 
 
@@ -75,7 +75,7 @@ async def get_wbi_keys():
 async def get_bili_wbi() -> str:
     """获取B站WBI签名"""
     cache_key = "bilibili-wbi"
-    cached_data = cache_storage.get_item(cache_key)
+    cached_data = cache.get(cache_key)
     if cached_data:
         return cached_data
     
@@ -83,7 +83,7 @@ async def get_bili_wbi() -> str:
         keys = await get_wbi_keys()
         params = {"foo": "114", "bar": "514", "baz": "1919810"}
         query = encode_wbi(params, keys["img_key"], keys["sub_key"])
-        cache_storage.set_item(cache_key, query)
+        cache.set(cache_key, query)
         return query
     except Exception:
         return "foo=114&bar=514&baz=1919810&wts=" + str(int(time.time()))
@@ -210,4 +210,61 @@ bilibili_tool_config = ToolConfig(
 
 async def get_tool_config() -> ToolConfig:
     """获取工具配置"""
-    return await define_tool_config(bilibili_tool_config) 
+    return await define_tool_config(bilibili_tool_config)
+
+
+async def get_bilibili_trending():
+    """Get Bilibili trending videos."""
+    
+    # Cache key for bilibili trending
+    cache_key = "bilibili_trending"
+    
+    try:
+        # Check cache first
+        cached_data = cache.get(cache_key)
+        if cached_data:
+            logger.info("从缓存获取哔哩哔哩热榜数据")
+            return cached_data
+        
+        # Fetch from API
+        url = "https://api.bilibili.com/x/web-interface/popular"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+            "Referer": "https://www.bilibili.com/",
+        }
+        
+        response = await http_client.get(url, headers=headers)
+        response.raise_for_status()
+        
+        data = response.json()
+        
+        if data.get("code") != 0:
+            raise Exception(f"API返回错误: {data.get('message', '未知错误')}")
+        
+        videos = data.get("data", {}).get("list", [])
+        
+        # Format the data
+        trending_data = []
+        for i, video in enumerate(videos[:20], 1):  # Top 20
+            item = {
+                "rank": i,
+                "title": video.get("title", ""),
+                "author": video.get("owner", {}).get("name", ""),
+                "view_count": video.get("stat", {}).get("view", 0),
+                "like_count": video.get("stat", {}).get("like", 0),
+                "url": video.get("short_link_v2", ""),
+                "duration": video.get("duration", 0),
+                "cover": video.get("pic", ""),
+                "pubdate": video.get("pubdate", 0)
+            }
+            trending_data.append(item)
+        
+        # Cache the result
+        cache.set(cache_key, trending_data)
+        
+        logger.info(f"获取哔哩哔哩热榜数据成功，共{len(trending_data)}条")
+        return trending_data
+        
+    except Exception as e:
+        logger.error(f"获取哔哩哔哩热榜数据失败: {str(e)}")
+        raise 

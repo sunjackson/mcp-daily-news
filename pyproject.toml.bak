@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcp_daily_news"
-version = "1.6.3"
+version = "1.6.2"
 description = "🔥 基于 Model Context Protocol (MCP) 协议的全网热点趋势一站式聚合服务"
 readme = "README.md"
 requires-python = ">=3.10"

@@ -1,8 +1,8 @@
 # PyPI 发布指南
 
-## 📦 mcp-daily-news PyPI 发布脚本使用指南
+## 📦 mcp_daily_news PyPI 发布脚本使用指南
 
-本项目提供了一个自动化的 shell 脚本 `publish_to_pypi.sh`，用于将 mcp-daily-news 项目打包并发布到 PyPI 平台。
+本项目提供了一个自动化的 shell 脚本 `publish_to_pypi.sh`，用于将 mcp_daily_news 项目打包并发布到 PyPI 平台。
 
 ## 🚀 快速开始
 
@@ -86,14 +86,14 @@ export TWINE_PASSWORD=pypi-your-api-token-here
 选择发布到TestPyPI用于测试：
 ```bash
 # 测试安装命令
-pip install --index-url https://test.pypi.org/simple/ mcp-daily-news
+pip install --index-url https://test.pypi.org/simple/ mcp_daily_news
 ```
 
 ### 生产环境发布
 发布到正式PyPI前会有二次确认：
 ```bash
 # 安装命令
-pip install mcp-daily-news
+pip install mcp_daily_news
 ```
 
 ### Git集成

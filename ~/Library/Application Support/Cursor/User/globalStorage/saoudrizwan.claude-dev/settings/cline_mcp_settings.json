@@ -1,10 +1,9 @@
 {
   "mcpServers": {
-    "daily-news": {
-      "command": "mcp_daily_news",
+    "mcp_daily_news": {
+      "command": "/Users/sunjackson/Project/mcp-trends-hub/py-hub/venv/bin/mcp_daily_news",
       "args": [],
       "env": {
-        "DAILY_NEWS_HIDDEN_FIELDS": "cover",
         "TRENDS_HUB_CUSTOM_RSS_URL": "https://feeds.bbci.co.uk/news/rss.xml"
       }
     }
