@@ -9,7 +9,7 @@ class Logger:
     """自定义日志器"""
     
     def __init__(self):
-        self._logger = logging.getLogger("mcp-trends-hub")
+        self._logger = logging.getLogger("mcp-daily-news")
         self._logger.setLevel(logging.INFO)
         
         # 创建控制台处理器

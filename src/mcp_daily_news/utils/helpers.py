@@ -46,7 +46,7 @@ def handle_error_result(error: Exception) -> Dict[str, Any]:
 
 def handle_success_result(results: Results, tool_name: str) -> Dict[str, Any]:
     """处理成功结果"""
-    hidden_fields_env = os.environ.get("TRENDS_HUB_HIDDEN_FIELDS", "")
+    hidden_fields_env = os.environ.get("DAILY_NEWS_HIDDEN_FIELDS", "")
     hidden_fields = []
     
     if hidden_fields_env:

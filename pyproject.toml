@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mcp-trends-hub"
+name = "mcp-daily-news"
 version = "1.6.2"
 description = "🔥 基于 Model Context Protocol (MCP) 协议的全网热点趋势一站式聚合服务"
 readme = "README.md"
@@ -12,7 +12,7 @@ license = {text = "MIT"}
 authors = [
     {name = "baranwang"},
 ]
-keywords = ["mcp", "trends"]
+keywords = ["mcp", "daily", "news"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -38,12 +38,12 @@ dev = [
 ]
 
 [project.scripts]
-mcp-trends-hub = "mcp_trends_hub.main:main_sync"
+mcp-daily-news = "mcp_daily_news.main:main_sync"
 
 [project.urls]
-Homepage = "https://github.com/baranwang/mcp-trends-hub"
-Repository = "https://github.com/baranwang/mcp-trends-hub.git"
-Issues = "https://github.com/baranwang/mcp-trends-hub/issues"
+Homepage = "https://github.com/baranwang/mcp-daily-news"
+Repository = "https://github.com/baranwang/mcp-daily-news.git"
+Issues = "https://github.com/baranwang/mcp-daily-news/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

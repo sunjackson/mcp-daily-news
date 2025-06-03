@@ -11,7 +11,7 @@ class CacheStorage:
     """缓存存储类"""
     
     def __init__(self):
-        self._cache_dir = Path(tempfile.gettempdir()) / "mcp-trends-hub" / "cache"
+        self._cache_dir = Path(tempfile.gettempdir()) / "mcp-daily-news" / "cache"
         self._cache_dir.mkdir(parents=True, exist_ok=True)
     
     def _get_path_by_key(self, key: str) -> Path:

@@ -17,7 +17,7 @@
 首先确保 MCP 服务器可以正常启动：
 
 ```bash
-cd /Users/sunjackson/Project/mcp-trends-hub/py-hub
+cd /Users/sunjackson/Project/mcp-daily-news/py-hub
 python start_mcp.py
 ```
 
@@ -40,10 +40,10 @@ python start_mcp.py
    ```json
    {
      "mcpServers": {
-       "trends-hub": {
+       "daily-news": {
          "command": "python",
          "args": [
-           "/Users/sunjackson/Project/mcp-trends-hub/py-hub/start_mcp.py"
+           "/Users/sunjackson/Project/mcp-daily-news/py-hub/start_mcp.py"
          ],
          "env": {
            "TRENDS_HUB_CUSTOM_RSS_URL": "https://api.github.com/repos/microsoft/vscode/releases.atom"
@@ -60,9 +60,9 @@ python start_mcp.py
 3. 搜索 "MCP"
 4. 找到 MCP Servers 配置项
 5. 添加新的服务器配置：
-   - Server Name: `trends-hub`
+   - Server Name: `daily-news`
    - Command: `python`
-   - Arguments: `/Users/sunjackson/Project/mcp-trends-hub/py-hub/start_mcp.py`
+   - Arguments: `/Users/sunjackson/Project/mcp-daily-news/py-hub/start_mcp.py`
    - Environment Variables: `TRENDS_HUB_CUSTOM_RSS_URL=https://api.github.com/repos/microsoft/vscode/releases.atom`
 
 ### 3. 重启 Cursor

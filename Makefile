@@ -36,7 +36,7 @@ lint:  ## 代码检查
 	mypy src/
 
 run:  ## 运行MCP服务器
-	mcp-trends-hub
+	mcp-daily-news
 
 build:  ## 构建包
 	python -m build

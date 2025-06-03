@@ -140,3 +140,5 @@ Thumbs.db
 
 # Test files
 test_tools.py 
+check_publish_readiness.sh
+publish_to_pypi.sh

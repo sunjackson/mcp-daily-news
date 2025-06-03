@@ -26,7 +26,7 @@ async def load_tool_configurations() -> Dict[str, ToolConfig]:
         if tool_file.name.startswith("__"):
             continue
             
-        module_name = f"mcp_trends_hub.tools.{tool_file.stem}"
+        module_name = f"mcp_daily_news.tools.{tool_file.stem}"
         try:
             module = importlib.import_module(module_name)
             if hasattr(module, "get_tool_config"):
@@ -42,7 +42,7 @@ async def load_tool_configurations() -> Dict[str, ToolConfig]:
 async def main():
     """主函数"""
     # 创建MCP服务器
-    server = Server("Trends Hub")
+    server = Server("Daily News")
     logger.set_mcp_server(server)
     
     # 加载工具配置

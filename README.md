@@ -17,7 +17,7 @@
 ### 方式一：从源码安装（推荐）
 
 ```bash
-cd py-hub
+cd mcp-daily-news
 pip install -r requirements.txt
 pip install -e .
 ```
@@ -25,7 +25,7 @@ pip install -e .
 ### 方式二：直接安装依赖
 
 ```bash
-cd py-hub
+cd mcp-daily-news
 pip install -r requirements.txt
 ```
 
@@ -44,7 +44,7 @@ pip install mcp-daily-news
 mcp-daily-news
 
 # 或者直接运行模块
-python -m mcp_trends_hub.main
+python -m mcp_daily_news.main
 ```
 
 ### MCP客户端配置
@@ -57,7 +57,7 @@ python -m mcp_trends_hub.main
     "daily-news": {
       "command": "python",
       "args": [
-        "-m", "mcp_trends_hub.main"
+        "-m", "mcp_daily_news.main"
       ]
     }
   }
@@ -78,7 +78,7 @@ python -m mcp_trends_hub.main
 
 ### 配置环境变量
 
-#### `TRENDS_HUB_HIDDEN_FIELDS` - 隐藏的字段列表
+#### `DAILY_NEWS_HIDDEN_FIELDS` - 隐藏的字段列表
 
 通过此环境变量可控制返回数据中的字段显示：
 
@@ -93,7 +93,7 @@ python -m mcp_trends_hub.main
     "daily-news": {
       "command": "mcp-daily-news",
       "env": {
-        "TRENDS_HUB_HIDDEN_FIELDS": "cover,get-zhihu-trending:description"
+        "DAILY_NEWS_HIDDEN_FIELDS": "cover,get-zhihu-trending:description"
       }
     }
   }
@@ -183,13 +183,13 @@ python test_tools.py --specific
 python start_mcp.py
 
 # 或使用模块方式
-python -m mcp_trends_hub.main
+python -m mcp_daily_news.main
 ```
 
 ### 3. 查看帮助信息
 
 ```bash
-python -m mcp_trends_hub.main --help
+python -m mcp_daily_news.main --help
 ```
 
 ## 🔧 开发
@@ -231,9 +231,9 @@ pytest
 
 要添加新的数据源工具，请参考现有工具的实现：
 
-1. 在 `src/mcp_trends_hub/tools/` 目录下创建新的Python文件
+1. 在 `src/mcp_daily_news/tools/` 目录下创建新的Python文件
 2. 实现 `get_tool_config()` 函数
-3. 在 `src/mcp_trends_hub/tools/__init__.py` 中导入新工具
+3. 在 `src/mcp_daily_news/tools/__init__.py` 中导入新工具
 4. 更新 `test_tools.py` 添加测试用例
 
 详细的开发指南请参考 `MIGRATION_SUMMARY.md` 文档。
