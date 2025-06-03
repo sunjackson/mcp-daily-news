@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-trends-hub"
+version = "1.6.2"
+description = "🔥 基于 Model Context Protocol (MCP) 协议的全网热点趋势一站式聚合服务"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "baranwang"},
+]
+keywords = ["mcp", "trends"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "mcp>=1.7.0",
+    "httpx>=0.25.0",
+    "pydantic>=2.0.0",
+    "lxml>=4.9.0",
+    "python-dateutil>=2.8.0",
+    "feedparser>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+]
+
+[project.scripts]
+mcp-trends-hub = "mcp_trends_hub.main:main_sync"
+
+[project.urls]
+Homepage = "https://github.com/baranwang/mcp-trends-hub"
+Repository = "https://github.com/baranwang/mcp-trends-hub.git"
+Issues = "https://github.com/baranwang/mcp-trends-hub/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.8"
+strict = true
+warn_return_any = true
+warn_unused_configs = true 

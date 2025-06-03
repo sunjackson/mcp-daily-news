@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "trends-hub": {
+      "command": "mcp-trends-hub",
+      "env": {
+        "TRENDS_HUB_HIDDEN_FIELDS": "cover",
+        "TRENDS_HUB_CUSTOM_RSS_URL": "https://feeds.bbci.co.uk/news/rss.xml"
+      }
+    }
+  }
+} 
